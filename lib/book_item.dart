@@ -12,12 +12,16 @@ class BookItem extends StatelessWidget {
       elevation: 2,
       child: ListTile(
         onTap: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => BookDetail(
-                selectedBook: listedBook,
-              ),
-            ),
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: (context) => BookDetail(
+          //       selectedBook: listedBook,
+          //     ),
+          //   ),
+          // );
+          Navigator.of(context).pushNamed(
+            '/book_detail',
+            arguments: listedBook,
           );
         },
         leading: Image.asset(

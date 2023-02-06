@@ -1,4 +1,5 @@
 import 'package:book_list/book_list.dart';
+import 'package:book_list/route_generator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: BookList(),
+      onGenerateRoute: RouterGenerator.routeGenerator,
     );
   }
 }
