@@ -1,3 +1,4 @@
+import 'package:book_list/book_item.dart';
 import 'package:flutter/material.dart';
 
 import 'data/list_data.dart';
@@ -5,9 +6,8 @@ import 'model/book.dart';
 
 class BookList extends StatelessWidget {
   late List<Book> allBooks;
-  BookList() {
+  BookList({super.key}) {
     allBooks = prepareData();
-    print(prepareData());
   }
 
   @override
@@ -19,7 +19,12 @@ class BookList extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text("Book List"),
+        child: ListView.builder(
+          itemCount: allBooks.length,
+          itemBuilder: (context, index) {
+            return BookItem(listedBook: allBooks[index]);
+          },
+        ),
       ),
     );
   }
@@ -32,8 +37,13 @@ class BookList extends StatelessWidget {
       var bookDetail = Strings.Books_Detail[i];
       var smallImage = Strings.Small_Images[i];
       var bigImage = Strings.Big_Images[i];
-      Book addBook =
-          Book(bookName, bookAuthor, bookDetail, smallImage, bigImage);
+      Book addBook = Book(
+        bookName,
+        bookAuthor,
+        bookDetail,
+        smallImage,
+        bigImage,
+      );
       tentativeList.add(addBook);
     }
     return tentativeList;
